@@ -194,14 +194,6 @@ section {
   font-size: 0.92rem;
 }
 
-.placeholder {
-  color: var(--accent);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
 .actions {
   display: flex;
   flex-direction: column;
@@ -490,10 +482,6 @@ section {
   color: var(--ink);
   box-shadow: var(--shadow);
   cursor: pointer;
-}
-
-.to-top[hidden] {
-  display: none;
 }
 
 @keyframes rise {
