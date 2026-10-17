@@ -301,6 +301,20 @@ section {
   line-height: 1.4;
 }
 
+.metric-lead {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.metric-lead .num,
+.metric-lead .label {
+  color: #f7f5f1;
+}
+
+.metric-lead .label {
+  color: rgba(247, 245, 241, 0.78);
+}
+
 .card {
   padding: 1.05rem 1rem 1.1rem;
 }
@@ -344,36 +358,39 @@ section {
 }
 
 .shot {
-  margin: 0.9rem 0 0;
-}
-
-.shot img,
-.shot figcaption {
-  border-radius: 12px;
-}
-
-.shot figcaption,
-.ad-slot {
-  display: grid;
-  place-items: center;
-  min-height: 8.5rem;
-  padding: 1rem;
+  margin: 1rem 0 0;
+  padding: 0.4rem 0.4rem 0.15rem;
   background: var(--bg);
-  border: 1px dashed #cfc8bd;
-  color: var(--muted);
-  text-align: center;
-  font-size: 0.88rem;
-}
-
-.shot.has-image figcaption {
-  display: none;
+  border-radius: 14px;
 }
 
 .shot img {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  background: var(--bg);
+  object-position: center top;
+  border-radius: 11px;
+  background: #fff;
+}
+
+.shot figcaption {
+  margin: 0;
+  padding: 0.6rem 0.45rem 0.45rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.project {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-links {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--line);
 }
 
 .badge {
@@ -387,10 +404,6 @@ section {
 
 .project p + p {
   margin-top: 0.3rem;
-}
-
-.card-links {
-  margin-top: 0.9rem;
 }
 
 .ad-grid {
