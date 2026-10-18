@@ -151,7 +151,7 @@ section { padding: 40px 0; scroll-margin-top: 6.5rem; }
 .band-cream { background: var(--cream); color: var(--ink); }
 .band-black { background: var(--ink); }
 
-.grid { display: grid; gap: 1rem; align-items: stretch; }
+.grid { display: grid; gap: 1rem; align-items: start; }
 .grid > * { min-width: 0; }
 
 .card,
@@ -250,6 +250,7 @@ section { padding: 40px 0; scroll-margin-top: 6.5rem; }
 .acc-body, .case-body { display: none; padding-top: 0.75rem; }
 .acc-btn.is-open + .acc-body,
 .case-btn.is-open + .case-body { display: block; }
+.case-btn .tag { margin-bottom: 0.45rem; }
 
 .acc-btn, .case-btn {
   width: 100%;
@@ -332,7 +333,13 @@ a.btn-ghost {
   box-shadow: none;
 }
 
-.card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.card-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.card a.btn, .acc a.btn, .case a.btn {
+  width: auto;
+  max-width: 100%;
+  flex: 0 0 auto;
+  white-space: normal;
+}
 
 .site-footer {
   padding: 28px 0 36px;
