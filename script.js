@@ -28,20 +28,6 @@ if (toTopBtn) {
   });
 }
 
-document.querySelectorAll(".tab").forEach(function (tab) {
-  tab.addEventListener("click", function () {
-    var name = tab.getAttribute("data-tab");
-    document.querySelectorAll(".tab").forEach(function (item) {
-      var on = item === tab;
-      item.classList.toggle("is-on", on);
-      item.setAttribute("aria-selected", on ? "true" : "false");
-    });
-    document.querySelectorAll(".seg-panel").forEach(function (panel) {
-      panel.classList.toggle("is-hidden", panel.id !== "seg-" + name);
-    });
-  });
-});
-
 document.querySelectorAll(".chip").forEach(function (chip) {
   chip.addEventListener("click", function () {
     document.querySelectorAll(".chip").forEach(function (item) {
@@ -52,29 +38,24 @@ document.querySelectorAll(".chip").forEach(function (chip) {
   });
 });
 
-function wireExclusive(selector) {
-  document.querySelectorAll(selector).forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var group = btn.closest(".exclusive");
-      var open = btn.classList.contains("is-open");
-      if (group) {
-        group.querySelectorAll(".acc-btn").forEach(function (other) {
-          other.classList.remove("is-open");
-          other.setAttribute("aria-expanded", "false");
-        });
-      }
-      if (!open) {
-        btn.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
+document.querySelectorAll(".exclusive .acc-btn").forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    var group = btn.closest(".exclusive");
+    var open = btn.classList.contains("is-open");
+    if (group) {
+      group.querySelectorAll(".acc-btn").forEach(function (other) {
+        other.classList.remove("is-open");
+        other.setAttribute("aria-expanded", "false");
+      });
+    }
+    if (!open) {
+      btn.classList.add("is-open");
+      btn.setAttribute("aria-expanded", "true");
+    }
   });
-}
+});
 
-wireExclusive(".exclusive .acc-btn");
-
-document.querySelectorAll(".acc-btn").forEach(function (btn) {
-  if (btn.closest(".exclusive")) return;
+document.querySelectorAll(".founder-btn").forEach(function (btn) {
   btn.addEventListener("click", function () {
     var open = btn.classList.contains("is-open");
     btn.classList.toggle("is-open", !open);
@@ -109,7 +90,7 @@ if (TESTIMONIALS.length) {
   var host = document.querySelector("#testimonial-host");
   if (host) {
     host.hidden = false;
-    var html = "<p class='idx'>06</p><h2>What people <em>say</em></h2>";
+    var html = "<p class='idx'>06</p><h2>What people say</h2>";
     TESTIMONIALS.forEach(function (item) {
       html += "<article class='card'><p>" + item.quote + "</p><p><strong>" + item.name + "</strong> " + item.role + "</p></article>";
     });
