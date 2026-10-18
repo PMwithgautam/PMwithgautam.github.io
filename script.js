@@ -90,7 +90,7 @@ if (TESTIMONIALS.length) {
   var host = document.querySelector("#testimonial-host");
   if (host) {
     host.hidden = false;
-    var html = "<p class='idx'>06</p><h2>What people say</h2>";
+    var html = "<h2>Client</h2>";
     TESTIMONIALS.forEach(function (item) {
       html += "<article class='card'><p>" + item.quote + "</p><p><strong>" + item.name + "</strong> " + item.role + "</p></article>";
     });
