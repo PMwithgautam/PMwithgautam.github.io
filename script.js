@@ -28,14 +28,12 @@ if (toTopBtn) {
   });
 }
 
-document.querySelectorAll(".chip").forEach(function (chip) {
-  chip.addEventListener("click", function () {
-    document.querySelectorAll(".chip").forEach(function (item) {
-      item.classList.toggle("is-on", item === chip);
-    });
-    var note = document.querySelector("#chip-note");
-    if (note) note.textContent = chip.getAttribute("data-note");
-  });
+document.addEventListener("keydown", function (event) {
+  var btn = event.target && event.target.closest ? event.target.closest(".acc-btn") : null;
+  if (!btn) return;
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  btn.click();
 });
 
 document.querySelectorAll(".exclusive .acc-btn").forEach(function (btn) {
@@ -55,42 +53,11 @@ document.querySelectorAll(".exclusive .acc-btn").forEach(function (btn) {
   });
 });
 
-document.querySelectorAll(".founder-btn").forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    var open = btn.classList.contains("is-open");
-    btn.classList.toggle("is-open", !open);
-    btn.setAttribute("aria-expanded", open ? "false" : "true");
-  });
-});
-
-document.querySelectorAll(".case-btn").forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    var open = btn.classList.contains("is-open");
-    btn.classList.toggle("is-open", !open);
-    btn.setAttribute("aria-expanded", open ? "false" : "true");
-  });
-});
-
-if (!reduceMotion) {
-  var observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add("in");
-      observer.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll(".reveal").forEach(function (item) {
-    if (item.getBoundingClientRect().top < window.innerHeight * 0.92) item.classList.add("in");
-    else observer.observe(item);
-  });
-}
-
 if (TESTIMONIALS.length) {
   var host = document.querySelector("#testimonial-host");
   if (host) {
     host.hidden = false;
-    var html = "<h2>Client</h2>";
+    var html = "<p class='label'>Client</p>";
     TESTIMONIALS.forEach(function (item) {
       html += "<article class='card'><p>" + item.quote + "</p><p><strong>" + item.name + "</strong> " + item.role + "</p></article>";
     });
